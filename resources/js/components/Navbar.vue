@@ -52,6 +52,15 @@
               </router-link>
             </li>
           </template>
+
+          <li class="nav-item">
+            <router-link :to="{ name: 'cart' }" class="nav-link" active-class="active">
+              <div class="shopping-bag-wrapper">
+                <fa icon="shopping-bag" fixed-width />
+                <span class="badge badge-light">{{ cartCount }}</span>
+              </div>
+            </router-link>
+          </li>
         </ul>
       </div>
     </div>
@@ -72,7 +81,8 @@ export default {
   }),
 
   computed: mapGetters({
-    user: 'auth/user'
+    user: 'auth/user',
+    cartCount: 'cart/cartCount'
   }),
 
   methods: {
@@ -92,5 +102,14 @@ export default {
   width: 2rem;
   height: 2rem;
   margin: -.375rem 0;
+}
+
+.shopping-bag-wrapper{
+  position: relative;
+}
+.shopping-bag-wrapper span{
+  position: absolute;
+  top: -2px;
+  left: 20px; 
 }
 </style>
