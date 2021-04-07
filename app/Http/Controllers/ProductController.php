@@ -12,9 +12,10 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function get()
     {
-        //
+        $products = Product::latest()->get();
+        return response()->json($products,200);
     }
 
     /**
